@@ -30,3 +30,21 @@ combined_df = pd.concat(filtered_dfs, ignore_index=True)
 combined_df.to_csv('combined_consumer_data.csv', index=False)
 
 print("Filtered data from all files combined and saved to 'combined_consumer_data.csv'")
+
+
+
+
+
+---------------------------------Single File-------------------------------------------------
+
+
+import pandas as pd
+
+df = pd.read_excel('/content/Pooja_Pathak_MIS_excel.xlsx' ,sheet_name = "Orders")
+#print(df)
+# Filter rows where a specific column (e.g., 'consumer_column') matches a value
+filtered_df = df[df['Segment'] == 'Consumer']
+print(filtered_df)
+# Save the filtered DataFrame to a CSV file (e.g., 'filtered_output.csv')
+#filtered_df.to_csv('filtered_output.csv', index=False)
+filtered_df.to_csv('consumer.csv', index=False)
