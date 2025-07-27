@@ -1,0 +1,32 @@
+import pandas as pd
+
+# List of your 12 Excel file paths (update with your actual filenames or paths)
+file_list = [
+    '/content/file1.xlsx',
+    '/content/file2.xlsx',
+    '/content/file3.xlsx',
+    '/content/file4.xlsx',
+    '/content/file5.xlsx',
+    '/content/file6.xlsx',
+    '/content/file7.xlsx',
+    '/content/file8.xlsx',
+    '/content/file9.xlsx',
+    '/content/file10.xlsx',
+    '/content/file11.xlsx',
+    '/content/file12.xlsx'
+]
+
+filtered_dfs = []
+
+for file in file_list:
+    df = pd.read_excel(file, sheet_name='Orders')
+    filtered_df = df[df['Segment'] == 'Consumer']
+    filtered_dfs.append(filtered_df)
+
+# Concatenate all filtered dataframes into one
+combined_df = pd.concat(filtered_dfs, ignore_index=True)
+
+# Save the combined DataFrame to a CSV file
+combined_df.to_csv('combined_consumer_data.csv', index=False)
+
+print("Filtered data from all files combined and saved to 'combined_consumer_data.csv'")
